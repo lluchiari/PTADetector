@@ -1,0 +1,14 @@
+# Compiled source #
+###################
+*.com
+*.exe
+*.o
+*.Release
+*.Debugwq
+
+
+# Ignore not used folders
+###################
+./bin
+./debug
+./release
