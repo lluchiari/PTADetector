@@ -12,3 +12,7 @@
 ./bin
 ./debug
 ./release
+
+# Ignore Qt Files
+##################
+*.pro.user
