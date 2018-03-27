@@ -12,6 +12,7 @@
 ./bin
 ./debug
 ./release
+./images/results
 
 # Ignore Qt Files
 ##################

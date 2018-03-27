@@ -54,7 +54,7 @@ LIBS += -L$$PWD/../../OpenCV/opencv/build/x64/vc15/lib/ -lopencv_world341d
 
 
 INCLUDEPATH += $$PWD/../../OpenCV/opencv/build/x64/vc15 c:/Users/Lluchiari/Documents/OpenCV/opencv/build/include
-DEPENDPATH += $$PWD/../../OpenCV/opencv/build/x64/vc15 c:/Users/Lluchiari/Documents/OpenCV/opencv/build/include
+INCLUDEPATH += $$PWD/config
 
 DISTFILES += \
     images/results/Complex3/bilateralFilter0.png \

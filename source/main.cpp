@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     if(calibTest->readSettings() != 0) {ERROR = 1;}
 
     // Make the calibration
-    if(DEBUG) {cout << "Calibration Starting" << endl;}
+    if(DEBUG) {std::cout << "Calibration Starting" << std::endl;}
     calibTest->calibrate();
 
     //QString inputSettingsFile = QFileDialog::getOpenFileName(&w, "Open a file", "", "Configuration File (*.xml)");

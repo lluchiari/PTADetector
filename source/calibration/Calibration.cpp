@@ -44,7 +44,6 @@ int Calibration::readSettings()
     return 0;
 }
 
-
 int Calibration::parseInput() {
 
     vector<vector<Point2f> > imagePoints;
