@@ -14,30 +14,34 @@ Calibration::~Calibration()
 {
 }
 
+/**
+ * @brief read the configuration file to configure the calibration
+ * @return (0) if ok. (-1) if any error occured
+ */
 int Calibration::readSettings()
 {
     // Call the window dialog to find the file
     string inputSettingsFile = QFileDialog::getOpenFileName(this->_widget, "Open a file", "", "Configuration File (*.xml)").toLocal8Bit().constData();    
 
-    // Read the settings
+//    // Read the settings
 //    FileStorage fs(inputSettingsFile, FileStorage::READ);
 //    if (!fs.isOpened())
 //    {
 //        cout << "Could not open the configuration file: \"" << inputSettingsFile << "\"" << endl;
 //        return -1;
 //    }
-
 //    fs["Settings"] >> (this->_s);
 
-      // Close Settings file
+//    // Close Settings file
 //    fs.release();
 
     this->_s.read(inputSettingsFile);
 
 
+    // Check if the configure file process is good
     if (!this->_s.goodInput)
     {
-        cout << "Invalid input detected. Application stopping. " << endl;
+        cerr << "Invalid input detected. Application stopping. " << std::endl;
         return -1;
     }
 

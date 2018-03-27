@@ -28,7 +28,7 @@ public:
 
     int readSettings();
     int parseInput();
-    int calibrate();
+    //int calibrate();
 
 private:
     Settings _s;            //Setting file to be read by the funciton

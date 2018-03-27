@@ -48,10 +48,10 @@ public:
         IMAGE_LIST      //Images coming from a image list (remember to ennumerate the immage list)
     };
 
-    //Write serialization for this class
-    void write(SETTING_STORAGE& fs) const;
+//    //Write serialization for this class
+//    void write(SETTING_STORAGE& fs) const;
 
-    //Read serialization for this class
+//    //Read serialization for this class
 //    void read(const SETTING_NODE& node);
 
 //    static void read(const SETTING_NODE& node, Settings& x, const Settings& default_value = Settings())
@@ -99,7 +99,7 @@ public:
     int flag;
 
 private:
-    string patternToUse;
+    string _patternToUse;
 
 
 };

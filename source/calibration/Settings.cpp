@@ -1,60 +1,64 @@
 #include "../../include/calibration/Settings.h"
 
-void Settings::write(SETTING_STORAGE& fs) const
-{
-    fs << "{" << "BoardSize_Width"  << boardSize.width
-       << "BoardSize_Height" << boardSize.height
-       << "Square_Size"         << squareSize
-       << "Calibrate_Pattern" << patternToUse
-       << "Calibrate_NrOfFrameToUse" << nrFrames
-       << "Calibrate_FixAspectRatio" << aspectRatio
-       << "Calibrate_AssumeZeroTangentialDistortion" << calibZeroTangentDist
-       << "Calibrate_FixPrincipalPointAtTheCenter" << calibFixPrincipalPoint
+//void Settings::write(SETTING_STORAGE& fs) const
+//{
+//    fs << "{" << "BoardSize_Width"  << this->boardSize.width
+//       << "BoardSize_Height" << this->boardSize.height
+//       << "Square_Size"         << this->squareSize
+//       << "Calibrate_Pattern" << this->_patternToUse
+//       << "Calibrate_NrOfFrameToUse" << this->nrFrames
+//       << "Calibrate_FixAspectRatio" << this->aspectRatio
+//       << "Calibrate_AssumeZeroTangentialDistortion" << this->calibZeroTangentDist
+//       << "Calibrate_FixPrincipalPointAtTheCenter" << this->calibFixPrincipalPoint
 
-       << "Write_DetectedFeaturePoints" << bwritePoints
-       << "Write_extrinsicParameters"   << bwriteExtrinsics
-       << "Write_outputFileName"  << outputFileName
+//       << "Write_DetectedFeaturePoints" << this->bwritePoints
+//       << "Write_extrinsicParameters"   << this->bwriteExtrinsics
+//       << "Write_outputFileName"  << this->outputFileName
 
-       << "Show_UndistortedImage" << showUndistorsed
+//       << "Show_UndistortedImage" << this->showUndistorsed
 
-       << "Input_FlipAroundHorizontalAxis" << flipVertical
-       << "Input_Delay" << delay
-       << "Input" << input
-       << "}";
-}
+//       << "Input_FlipAroundHorizontalAxis" << this->flipVertical
+//       << "Input_Delay" << this->delay
+//       << "Input" << this->input
+//       << "}";
+//}
 
 //void Settings::read(const SETTING_NODE
 //                    & node)
 //{
-//    node["BoardSize_Width" ] >> boardSize.width;
-//    node["BoardSize_Height"] >> boardSize.height;
-//    node["Calibrate_Pattern"] >> patternToUse;
-//    node["Square_Size"]  >> squareSize;
-//    node["Calibrate_NrOfFrameToUse"] >> nrFrames;
-//    node["Calibrate_FixAspectRatio"] >> aspectRatio;
-//    node["Write_DetectedFeaturePoints"] >> bwritePoints;
-//    node["Write_extrinsicParameters"] >> bwriteExtrinsics;
-//    node["Write_outputFileName"] >> outputFileName;
-//    node["Calibrate_AssumeZeroTangentialDistortion"] >> calibZeroTangentDist;
-//    node["Calibrate_FixPrincipalPointAtTheCenter"] >> calibFixPrincipalPoint;
-//    node["Input_FlipAroundHorizontalAxis"] >> flipVertical;
-//    node["Show_UndistortedImage"] >> showUndistorsed;
-//    node["Input"] >> input;
-//    node["Input_Delay"] >> delay;
+//    node["BoardSize_Width" ] >> this->boardSize.width;
+//    node["BoardSize_Height"] >> this->boardSize.height;
+//    node["Calibrate_Pattern"] >> this->_patternToUse;
+//    node["Square_Size"]  >> this->squareSize;
+//    node["Calibrate_NrOfFrameToUse"] >> this->nrFrames;
+//    node["Calibrate_FixAspectRatio"] >> this->aspectRatio;
+//    node["Write_DetectedFeaturePoints"] >> this->bwritePoints;
+//    node["Write_extrinsicParameters"] >> this->bwriteExtrinsics;
+//    node["Write_outputFileName"] >> this->outputFileName;
+//    node["Calibrate_AssumeZeroTangentialDistortion"] >> this->calibZeroTangentDist;
+//    node["Calibrate_FixPrincipalPointAtTheCenter"] >> this->calibFixPrincipalPoint;
+//    node["Input_FlipAroundHorizontalAxis"] >> this->flipVertical;
+//    node["Show_UndistortedImage"] >> this->showUndistorsed;
+//    node["Input"] >> this->input;
+//    node["Input_Delay"] >> this->delay;
 //    interprate();
 //}
 
+/**
+ * @brief This function reads the xml file and fullfill the class variables
+ * @param fileLocation
+ */
 void Settings::read(string fileLocation)
 {
     this->boardSize.width = 9;
     this->boardSize.height = 6;
-    this->patternToUse = "CHESSBOARD";
+    this->_patternToUse = "CHESSBOARD";
     this->squareSize = 50;
     this->nrFrames = 25;
     this->aspectRatio = 1;
     this->bwritePoints = 1;
     this->bwriteExtrinsics = 1;
-    this->outputFileName = "out_camera_data.xml";
+    this->outputFileName = "out_camera_data.txt";
     this->calibZeroTangentDist = 1;
     this->calibFixPrincipalPoint = 1;
     this->flipVertical = 0;
@@ -64,6 +68,10 @@ void Settings::read(string fileLocation)
     interprate();
 }
 
+/**
+ * @brief This function interprate the configure file given and check for errors
+ *
+ */
 void Settings::interprate()
 {
     goodInput = true;
@@ -90,24 +98,24 @@ void Settings::interprate()
         if (input[0] >= '0' && input[0] <= '9')
         {
             stringstream ss(input);
-            ss >> cameraID;
+            ss >> this->cameraID;
             inputType = CAMERA;
         }
         else
         {
-            if (isListOfImages(input) && readStringList(input, imageList))
+            if (isListOfImages(input) && readStringList(input, this->imageList))
             {
                 inputType = IMAGE_LIST;
-                nrFrames = (nrFrames < (int)imageList.size()) ? nrFrames : (int)imageList.size();
+                this->nrFrames = (this->nrFrames < (int)imageList.size()) ? this->nrFrames : (int)imageList.size();
             }
             else
                 inputType = VIDEO_FILE;
         }
         if (inputType == CAMERA)
-            inputCapture.open(cameraID);
+            this->inputCapture.open(this->cameraID);
         if (inputType == VIDEO_FILE)
-            inputCapture.open(input);
-        if (inputType != IMAGE_LIST && !inputCapture.isOpened())
+            this->inputCapture.open(input);
+        if (inputType != IMAGE_LIST && !this->inputCapture.isOpened())
             inputType = INVALID;
     }
     if (inputType == INVALID)
@@ -116,22 +124,24 @@ void Settings::interprate()
         goodInput = false;
     }
 
-    flag = 0;
-    if(calibFixPrincipalPoint) flag |= CV_CALIB_FIX_PRINCIPAL_POINT;
-    if(calibZeroTangentDist)   flag |= CV_CALIB_ZERO_TANGENT_DIST;
-    if(aspectRatio)            flag |= CV_CALIB_FIX_ASPECT_RATIO;
+    this->flag = 0;
+    if(this->calibFixPrincipalPoint) this->flag |= CV_CALIB_FIX_PRINCIPAL_POINT;
+    if(this->calibZeroTangentDist)   this->flag |= CV_CALIB_ZERO_TANGENT_DIST;
+    if(this->aspectRatio)            this->flag |= CV_CALIB_FIX_ASPECT_RATIO;
 
 
-    calibrationPattern = NOT_EXISTING;
-    if (!patternToUse.compare("CHESSBOARD")) calibrationPattern = CHESSBOARD;
-    if (!patternToUse.compare("CIRCLES_GRID")) calibrationPattern = CIRCLES_GRID;
-    if (!patternToUse.compare("ASYMMETRIC_CIRCLES_GRID")) calibrationPattern = ASYMMETRIC_CIRCLES_GRID;
-    if (calibrationPattern == NOT_EXISTING)
+
+    // Chosing the kind of calibration pattern to be used
+    this->calibrationPattern = NOT_EXISTING;
+    if (!this->_patternToUse.compare("CHESSBOARD")) this->calibrationPattern = CHESSBOARD;
+    if (!this->_patternToUse.compare("CIRCLES_GRID")) this->calibrationPattern = CIRCLES_GRID;
+    if (!this->_patternToUse.compare("ASYMMETRIC_CIRCLES_GRID")) this->calibrationPattern = ASYMMETRIC_CIRCLES_GRID;
+    if (this->calibrationPattern == NOT_EXISTING)
     {
-        cerr << " Inexistent camera calibration mode: " << patternToUse << endl;
-        goodInput = false;
+        cerr << " Inexistent camera calibration mode: " << this->_patternToUse << endl;
+        this->goodInput = false;
     }
-    atImageList = 0;
+    this->atImageList = 0;
 }
 
 Mat Settings::nextImage(){
@@ -140,6 +150,8 @@ Mat Settings::nextImage(){
     {
         Mat view0;
         this->inputCapture >> view0;
+
+        //TODO: is this really necessary?
         view0.copyTo(result);
     }
     else if( this->atImageList < (int)this->imageList.size() )
