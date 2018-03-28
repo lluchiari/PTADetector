@@ -58,7 +58,7 @@ void Settings::read(string fileLocation)
     this->aspectRatio = 1;
     this->bwritePoints = 1;
     this->bwriteExtrinsics = 1;
-    this->outputFileName = "out_camera_data.txt";
+    this->outputFileName = "../config/out_camera_data.xml";
     this->calibZeroTangentDist = 1;
     this->calibFixPrincipalPoint = 1;
     this->flipVertical = 0;

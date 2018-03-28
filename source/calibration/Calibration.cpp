@@ -27,7 +27,7 @@ int Calibration::readSettings()
     }
     else{
         // Call the window dialog to find the file
-        inputSettingsFile = QFileDialog::getOpenFileName(this->_widget, "Open a file", "", "Configuration File (*.xml)").toLocal8Bit().constData();
+        inputSettingsFile = QFileDialog::getOpenFileName(this->_widget, "Open a file", "../", "Configuration File (*.xml)").toLocal8Bit().constData();
     }
 
     // Read the settings
@@ -43,8 +43,9 @@ int Calibration::readSettings()
     //    fs.release();
 
     // Read the Stack of Images file
-    this->_s.read(inputSettingsFile);
-
+    //this->_s.read(inputSettingsFile);
+    this->_s.read("0");
+if(DEBUG){cout << "After Read" << endl;}
 
     // Check if the configure file process is good
     if (!this->_s.goodInput)

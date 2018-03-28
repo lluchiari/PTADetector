@@ -25,22 +25,22 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
         source/main.cpp \
-        source/mainwindow.cpp \
         source/PTADetector.cpp \
         source/filter/CannyFilter.cpp \
         source/calibration/Calibration.cpp \
-        source/calibration/Settings.cpp
+        source/calibration/Settings.cpp \
+        source/ptawindow.cpp
 
-HEADERS += \
-        include/mainwindow.h\
+HEADERS += \        
         include/PTADetector.h\
         include/calibration/Calibration.h\
         include/calibration/Settings.h\
         include/filter/CannyFilter.h\
-        include/utils/common.h
+        include/utils/common.h \
+        include/ptawindow.h
 
 FORMS += \
-        mainwindow.ui
+        forms/ptawindow.ui
 
 DESTDIR = bin
 
