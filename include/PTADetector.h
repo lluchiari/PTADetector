@@ -8,6 +8,7 @@
 
 #include "./filter/CannyFilter.h"
 #include "./calibration/Calibration.h"
+#include <common.h>
 
 #include <iostream>
 #include <fstream>

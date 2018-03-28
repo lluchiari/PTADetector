@@ -36,7 +36,8 @@ HEADERS += \
         include/PTADetector.h\
         include/calibration/Calibration.h\
         include/calibration/Settings.h\
-        include/filter/CannyFilter.h
+        include/filter/CannyFilter.h\
+        include/utils/common.h
 
 FORMS += \
         mainwindow.ui
@@ -55,29 +56,10 @@ LIBS += -L$$PWD/../../OpenCV/opencv/build/x64/vc15/lib/ -lopencv_world341d
 
 INCLUDEPATH += $$PWD/../../OpenCV/opencv/build/x64/vc15 c:/Users/Lluchiari/Documents/OpenCV/opencv/build/include
 INCLUDEPATH += $$PWD/config
+INCLUDEPATH += $$PWD/include/utils
 
 DISTFILES += \
-    images/results/Complex3/bilateralFilter0.png \
-    images/results/Complex3/bilateralFilter10.png \
-    images/results/Complex3/bilateralFilter20.png \
-    images/results/Complex3/bilateralFilter30.png \
-    images/results/Complex3/bilateralFilter40.png \
-    images/results/Complex3/bilateralFilter50.png \
-    images/results/Complex3/bilateralFilter60.png \
-    images/results/Complex3/bilateralFilter70.png \
-    images/results/Complex3/bilateralFilter80.png \
-    images/results/Complex3/bilateralFilter90.png \
-    images/results/Complex3/gaussianBlur0.png \
-    images/results/Complex3/gaussianBlur10.png \
-    images/results/Complex3/gaussianBlur20.png \
-    images/results/Complex3/gaussianBlur30.png \
-    images/results/Complex3/gaussianBlur40.png \
-    images/results/Complex3/gaussianBlur50.png \
-    images/results/Complex3/gaussianBlur60.png \
-    images/results/Complex3/gaussianBlur70.png \
-    images/results/Complex3/gaussianBlur80.png \
-    images/results/Complex3/gaussianBlur90.png \
-    images/shapes/Complex3.png \
-    images/shapes/Simple1.png \
-    images/shapes/Simple2.png \
-    images/shapes/Simple3.png
+    $$PWD/config/* \
+    $$PWD/images/CameraCalibration/* \
+    $$PWD/images/results/* \
+    $$PWD/images/shapes/*

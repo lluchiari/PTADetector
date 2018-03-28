@@ -7,7 +7,7 @@
 
 #include <opencv2/core/core.hpp>
 
-#define DEBUG 1
+#include <common.h>
 
 namespace Ui {
 class MainWindow;

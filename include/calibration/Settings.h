@@ -10,6 +10,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
+#include <common.h>
 
 #ifndef _CRT_SECURE_NO_WARNINGS
 # define _CRT_SECURE_NO_WARNINGS
@@ -81,7 +82,7 @@ public:
     int nrFrames;                   // The number of frames to use from the input for calibration
     float aspectRatio;              // The aspect ratio
     int delay;                      // In case of a video input
-    bool bwritePoints;              //  Write detected feature points
+    bool bwritePoints;              // Write detected feature points
     bool bwriteExtrinsics;          // Write extrinsic parameters
     bool calibZeroTangentDist;      // Assume zero tangential distortion
     bool calibFixPrincipalPoint;    // Fix the principal point at the center
@@ -91,12 +92,12 @@ public:
     string input;                   // The input ->
 
     int cameraID;
-    vector<string> imageList;
-    int atImageList;
-    VideoCapture inputCapture;
-    InputType inputType;
-    bool goodInput;
-    int flag;
+    vector<string> imageList;       // List with addres of image files
+    int atImageList;                // Image List Counter for parsing iteration
+    VideoCapture inputCapture;      //
+    InputType inputType;            //
+    bool goodInput;                 //
+    int flag;                       //
 
 private:
     string _patternToUse;

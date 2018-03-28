@@ -54,7 +54,7 @@ void Settings::read(string fileLocation)
     this->boardSize.height = 6;
     this->_patternToUse = "CHESSBOARD";
     this->squareSize = 50;
-    this->nrFrames = 25;
+    this->nrFrames = 7;
     this->aspectRatio = 1;
     this->bwritePoints = 1;
     this->bwriteExtrinsics = 1;
@@ -74,49 +74,61 @@ void Settings::read(string fileLocation)
  */
 void Settings::interprate()
 {
-    goodInput = true;
-    if (boardSize.width <= 0 || boardSize.height <= 0)
+    this->goodInput = true;
+    if (this->boardSize.width <= 0 || this->boardSize.height <= 0)
     {
-        cerr << "Invalid Board size: " << boardSize.width << " " << boardSize.height << endl;
-        goodInput = false;
+        cerr << "Invalid Board size: " << this->boardSize.width << " " << this->boardSize.height << endl;
+        this->goodInput = false;
     }
-    if (squareSize <= 10e-6)
+    if (this->squareSize <= 10e-6)
     {
         cerr << "Invalid square size " << squareSize << endl;
-        goodInput = false;
+        this->goodInput = false;
     }
-    if (nrFrames <= 0)
+    if (this->nrFrames <= 0)
     {
-        cerr << "Invalid number of frames " << nrFrames << endl;
-        goodInput = false;
+        cerr << "Invalid number of frames! Fix you configuration file " << this->nrFrames << endl;
+        this->goodInput = false;
     }
-
-    if (input.empty())      // Check for valid input
-        inputType = INVALID;
+    if (this->input.empty())
+    {
+        this->inputType = INVALID;
+    }
     else
     {
-        if (input[0] >= '0' && input[0] <= '9')
+        // In the CAMERA case. Idicates the ID of the camera.
+        if (this->input[0] >= '0' && this->input[0] <= '9')
         {
-            stringstream ss(input);
+            stringstream ss(this->input);
             ss >> this->cameraID;
-            inputType = CAMERA;
+            this->inputType = CAMERA;
         }
         else
         {
-            if (isListOfImages(input) && readStringList(input, this->imageList))
+            if (isListOfImages(this->input) && readStringList(input, this->imageList))
             {
+                if(DEBUG_SETTINGS){cout << "Settings::interprate(): IMAGE_LIST mode " << endl;}
                 inputType = IMAGE_LIST;
                 this->nrFrames = (this->nrFrames < (int)imageList.size()) ? this->nrFrames : (int)imageList.size();
+                if(DEBUG_SETTINGS){cout << "Settings::interprate(): Number of Frames: " << this->nrFrames<< endl;}
             }
-            else
+            else {
+                if(DEBUG_SETTINGS){cout << "Settings::interprate(): VIDEO_FILE mode " << endl;}
                 inputType = VIDEO_FILE;
+            }
         }
-        if (inputType == CAMERA)
+        if (inputType == CAMERA){
+            if(DEBUG_SETTINGS){cout << "Settings::interprate(): CAMERA open mode " << endl;}
             this->inputCapture.open(this->cameraID);
-        if (inputType == VIDEO_FILE)
+        }
+        if (inputType == VIDEO_FILE){
+            if(DEBUG_SETTINGS){cout << "Settings::interprate(): VIDEO_FILE open mode " << endl;}
             this->inputCapture.open(input);
-        if (inputType != IMAGE_LIST && !this->inputCapture.isOpened())
+        }
+        if (inputType != IMAGE_LIST && !this->inputCapture.isOpened()){
+            if(DEBUG_SETTINGS){cout << "Settings::interprate(): INVALID mode " << endl;}
             inputType = INVALID;
+        }
     }
     if (inputType == INVALID)
     {
@@ -148,15 +160,20 @@ Mat Settings::nextImage(){
     Mat result;
     if( this->inputCapture.isOpened() )
     {
+        if(DEBUG_SETTINGS){cout << "Settings::nextImage(): 1 " << endl;}
         Mat view0;
         this->inputCapture >> view0;
 
-        //TODO: is this really necessary?
+        //TODO: is this really necessary? Cab I copy strait to the result
         view0.copyTo(result);
     }
     else if( this->atImageList < (int)this->imageList.size() )
+    {
+        if(DEBUG_SETTINGS){
+            cout << "Settings::nextImage(): Reading Image " << this->imageList[this->atImageList] << endl;
+        }
         result = imread(this->imageList[this->atImageList++], CV_LOAD_IMAGE_COLOR);
-
+    }
     return result;
 }
 

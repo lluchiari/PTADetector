@@ -17,7 +17,9 @@
 #include <opencv2/calib3d/calib3d.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#include "../mainwindow.h"
 #include "./Settings.h"
+#include <common.h>
 
 class Calibration
 {
@@ -27,8 +29,8 @@ public:
 	~Calibration();
 
     int readSettings();
-    int parseInput();
-    //int calibrate();
+//    int parseInput();
+    int calibrate();
 
 private:
     Settings _s;            //Setting file to be read by the funciton
@@ -36,7 +38,7 @@ private:
 
     enum {
         DETECTION = 0,      // This mode takes the images direct from a file
-        CAPTURING = 1,      // This mode is capturing images from the camera
+        CAPTURING = 1,      // This mode is capturing images from the camera or image list
         CALIBRATED = 2      // This mode indicate that is already calibrated
     };
 
