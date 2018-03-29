@@ -1,5 +1,6 @@
 #include "../include/ptawindow.h"
 #include "../include/calibration/Calibration.h"
+#include "../include/PTADetector.h"
 
 #include <QApplication>
 #include <QString>
@@ -10,6 +11,7 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     PTAWindow w;
     w.show();
+    PTADetector *detector = new PTADetector();
 //    Calibration *calibTest = new Calibration(&w);
 
 //    // Check if the reading process is working correctlly
@@ -27,5 +29,6 @@ int main(int argc, char *argv[])
 //    //std::cout << inputSettingsFile.toUtf8().constData();
 
 //    delete calibTest;
+    delete detector;
     return a.exec();
 }

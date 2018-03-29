@@ -1,6 +1,8 @@
 #ifndef __PTA_DETECTOR__
 #define __PTA_DETECTOR__
 
+#include <QWidget>
+
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -24,16 +26,25 @@ using namespace std;
 #ifdef __linux__   
 #endif
 
-Mat loadImages(string);
-Mat borderDetecting(Mat);
-
 class PTADetector{
   public:
     PTADetector();
+    PTADetector(QWidget *);
     ~PTADetector();
 
-   public:
+public:
+    Mat borderDetecting(Mat);
+    Mat loadImages(string);
     int run();
+
+    // Seters
+    void setWidget(QWidget *);
+
+    // Geters
+    QWidget *getWidget();
+
+private:
+    QWidget *_widget;
 };
 
 

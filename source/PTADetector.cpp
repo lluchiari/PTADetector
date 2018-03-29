@@ -6,9 +6,26 @@ PTADetector::PTADetector()
 
 }
 
+PTADetector::PTADetector(QWidget *wid)
+{
+    this->_widget = wid;
+
+}
+
 PTADetector::~PTADetector(){
 
 }
+
+void PTADetector::setWidget(QWidget *wid)
+{
+    this->_widget = wid;
+}
+
+QWidget *PTADetector::getWidget()
+{
+    return this->_widget;
+}
+
 
 int PTADetector::run()
 {
@@ -101,7 +118,7 @@ int PTADetector::run()
 * @param filename
 * @brief Load imagens from a specified file
 */
-Mat loadImages(string filename)
+Mat PTADetector::loadImages(string filename)
 {
     Mat src;
     src = imread(filename, CV_LOAD_IMAGE_COLOR);
@@ -109,8 +126,10 @@ Mat loadImages(string filename)
 }
 
 
-//Mat borderDetecting(Mat src)
-//{
-//	int i, j;
+Mat PTADetector::borderDetecting(Mat src)
+{
+    Mat result;
+    //int i, j;
+    return result;
 
-//}
+}
