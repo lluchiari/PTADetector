@@ -4,7 +4,7 @@
 *.exe
 *.o
 *.Release
-*.Debugwq
+*.Debug
 
 
 # Ignore not used folders
