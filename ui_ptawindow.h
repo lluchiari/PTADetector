@@ -62,9 +62,14 @@ public:
     QHBoxLayout *horizontalLayout_2;
     QLineEdit *StackImageFileLineEdit;
     QPushButton *StackImageFilePushButton;
+    QVBoxLayout *OutputFileLayout;
+    QLabel *OutputFileLabel;
+    QWidget *OutputFileWidget;
+    QHBoxLayout *horizontalLayout_21;
+    QLineEdit *OutputFileLineEdit;
+    QPushButton *OutputFilePushButton;
     QWidget *ConfirmWidget;
     QHBoxLayout *horizontalLayout_3;
-    QSpacerItem *horizontalSpacer_3;
     QPushButton *ConfirmPushButton;
     QSpacerItem *verticalSpacer;
     QSpacerItem *horizontalSpacer_2;
@@ -75,7 +80,7 @@ public:
     {
         if (PTAWindow->objectName().isEmpty())
             PTAWindow->setObjectName(QStringLiteral("PTAWindow"));
-        PTAWindow->resize(677, 411);
+        PTAWindow->resize(677, 481);
         gridLayout = new QGridLayout(PTAWindow);
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         gridLayout->setContentsMargins(9, 3, 9, 9);
@@ -221,14 +226,39 @@ public:
 
         verticalLayout_3->addLayout(StackImageFileLayout);
 
+        OutputFileLayout = new QVBoxLayout();
+        OutputFileLayout->setObjectName(QStringLiteral("OutputFileLayout"));
+        OutputFileLabel = new QLabel(ControlPanel);
+        OutputFileLabel->setObjectName(QStringLiteral("OutputFileLabel"));
+
+        OutputFileLayout->addWidget(OutputFileLabel);
+
+        OutputFileWidget = new QWidget(ControlPanel);
+        OutputFileWidget->setObjectName(QStringLiteral("OutputFileWidget"));
+        sizePolicy4.setHeightForWidth(OutputFileWidget->sizePolicy().hasHeightForWidth());
+        OutputFileWidget->setSizePolicy(sizePolicy4);
+        horizontalLayout_21 = new QHBoxLayout(OutputFileWidget);
+        horizontalLayout_21->setObjectName(QStringLiteral("horizontalLayout_21"));
+        OutputFileLineEdit = new QLineEdit(OutputFileWidget);
+        OutputFileLineEdit->setObjectName(QStringLiteral("OutputFileLineEdit"));
+
+        horizontalLayout_21->addWidget(OutputFileLineEdit);
+
+        OutputFilePushButton = new QPushButton(OutputFileWidget);
+        OutputFilePushButton->setObjectName(QStringLiteral("OutputFilePushButton"));
+
+        horizontalLayout_21->addWidget(OutputFilePushButton);
+
+
+        OutputFileLayout->addWidget(OutputFileWidget);
+
+
+        verticalLayout_3->addLayout(OutputFileLayout);
+
         ConfirmWidget = new QWidget(ControlPanel);
         ConfirmWidget->setObjectName(QStringLiteral("ConfirmWidget"));
         horizontalLayout_3 = new QHBoxLayout(ConfirmWidget);
         horizontalLayout_3->setObjectName(QStringLiteral("horizontalLayout_3"));
-        horizontalSpacer_3 = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-
-        horizontalLayout_3->addItem(horizontalSpacer_3);
-
         ConfirmPushButton = new QPushButton(ConfirmWidget);
         ConfirmPushButton->setObjectName(QStringLiteral("ConfirmPushButton"));
 
@@ -278,15 +308,15 @@ public:
         QWidget::setTabOrder(ControlSelector_CameraRadioButton, ControlSelector_VideoRadioButton);
         QWidget::setTabOrder(ControlSelector_VideoRadioButton, LoadConfigFileLineEdit);
         QWidget::setTabOrder(LoadConfigFileLineEdit, LoadConfigFilePushButton);
-        QWidget::setTabOrder(LoadConfigFilePushButton, StackImageFileLineEdit);
-        QWidget::setTabOrder(StackImageFileLineEdit, StackImageFilePushButton);
-        QWidget::setTabOrder(StackImageFilePushButton, ConfirmPushButton);
+        QWidget::setTabOrder(LoadConfigFilePushButton, OutputFileLineEdit);
+        QWidget::setTabOrder(OutputFileLineEdit, OutputFilePushButton);
+        QWidget::setTabOrder(OutputFilePushButton, ConfirmPushButton);
         QWidget::setTabOrder(ConfirmPushButton, Log);
         QWidget::setTabOrder(Log, pushButton);
 
         retranslateUi(PTAWindow);
         QObject::connect(LoadConfigFilePushButton, SIGNAL(clicked()), LoadConfigFileLineEdit, SLOT(copy()));
-        QObject::connect(StackImageFilePushButton, SIGNAL(clicked()), StackImageFileLineEdit, SLOT(copy()));
+        QObject::connect(OutputFilePushButton, SIGNAL(clicked()), OutputFileLineEdit, SLOT(copy()));
 
         tabWidget->setCurrentIndex(0);
 
@@ -304,8 +334,10 @@ public:
         ControlSelector_VideoRadioButton->setText(QApplication::translate("PTAWindow", "Video", nullptr));
         LoadConfigFileLabel->setText(QApplication::translate("PTAWindow", "Load Configuration File:", nullptr));
         LoadConfigFilePushButton->setText(QApplication::translate("PTAWindow", "Load", nullptr));
-        StackImageFileLabel->setText(QApplication::translate("PTAWindow", "Load Stack Image File", nullptr));
+        StackImageFileLabel->setText(QApplication::translate("PTAWindow", "Load Stack Image File:", nullptr));
         StackImageFilePushButton->setText(QApplication::translate("PTAWindow", "Load", nullptr));
+        OutputFileLabel->setText(QApplication::translate("PTAWindow", "Output File Location:", nullptr));
+        OutputFilePushButton->setText(QApplication::translate("PTAWindow", "Load", nullptr));
         ConfirmPushButton->setText(QApplication::translate("PTAWindow", "Calibrate", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Calibration), QApplication::translate("PTAWindow", "Calibration", nullptr));
         tabWidget->setTabText(tabWidget->indexOf(Aquisition), QApplication::translate("PTAWindow", "Aquisition", nullptr));

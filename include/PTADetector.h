@@ -26,15 +26,19 @@ using namespace std;
 #ifdef __linux__   
 #endif
 
-class PTADetector{
+class PTADetector : public QObject
+{
+    Q_OBJECT
+
   public:
-    PTADetector();
+    PTADetector(QObject *parent = 0);
     PTADetector(QWidget *);
     ~PTADetector();
 
 public:
     Mat borderDetecting(Mat);
     Mat loadImages(string);
+    void runCalibration();
     int run();
 
     // Seters
@@ -43,8 +47,12 @@ public:
     // Geters
     QWidget *getWidget();
 
+public slots:
+    void setCalibrate();
+
 private:
-    QWidget *_widget;
+    Calibration *_calib;
+    QWidget *_view;
 };
 
 

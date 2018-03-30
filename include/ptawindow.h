@@ -45,6 +45,17 @@ private slots:
 
     void on_StackImageFilePushButton_clicked();
 
+    void on_OutputFilePushButton_clicked();
+
+    void on_ControlSelector_ImageStackRadioButton_clicked();
+
+    void on_ControlSelector_CameraRadioButton_clicked();
+
+    void on_ControlSelector_VideoRadioButton_clicked();
+
+signals:
+    void callCalibration();
+
 private:
     Ui::PTAWindow *ui;
 
@@ -54,6 +65,7 @@ private:
 
     string _inputSettingsFile;
     string _inputStackImageFile;
+    string _OutputFileURL;
 };
 
 #endif // PTAWINDOW_H
