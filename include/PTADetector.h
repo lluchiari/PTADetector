@@ -20,19 +20,18 @@ using namespace cv;
 using namespace std;
 
 
-#ifdef _WIN64   
-#endif
+//#ifdef _WIN64
+//#endif
 
-#ifdef __linux__   
-#endif
+//#ifdef __linux__
+//#endif
 
 class PTADetector : public QObject
 {
     Q_OBJECT
 
-  public:
-    PTADetector(QObject *parent = 0);
-    PTADetector(QWidget *);
+public:
+    PTADetector(QWidget *, QObject *parent=0);
     ~PTADetector();
 
 public:

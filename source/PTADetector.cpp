@@ -1,15 +1,10 @@
 #include "../include/PTADetector.h"
 
-
-PTADetector::PTADetector(QObject *parent=0)
-{
-
-}
-
-PTADetector::PTADetector(QWidget *wid)
-{
+PTADetector::PTADetector(QWidget *wid, QObject *parent):QObject(parent)
+{    
     this->_view = wid;
     this->_calib = new Calibration(wid);
+    QObject::connect(this->_view, SIGNAL(callCalibration()), detector, SLOT(setCalibrate()));
 }
 
 PTADetector::~PTADetector(){

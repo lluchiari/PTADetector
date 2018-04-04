@@ -17,7 +17,6 @@ PTAWindow::~PTAWindow()
 
 void PTAWindow::on_ConfirmPushButton_clicked()
 {
-
     // Check if the form is correctlly filled. If yes run the calibration
     if(!ui->LoadConfigFileLineEdit->text().isEmpty()
             && !ui->StackImageFileLineEdit->text().isEmpty()

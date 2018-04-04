@@ -15,8 +15,6 @@ int main(int argc, char *argv[])
     // Controller
     PTADetector *detector = new PTADetector(&w);
 
-    QObject::connect(&w, SIGNAL(callCalibration()), detector, SLOT(setCalibrate()));
-
     delete detector;
     return a.exec();
 }
