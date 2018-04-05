@@ -63,6 +63,7 @@ private:
     bool _ImageStackRadioButton;
     bool _VideoRadioButton;
 
+public:
     string _inputSettingsFile;
     string _inputStackImageFile;
     string _OutputFileURL;

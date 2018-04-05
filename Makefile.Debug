@@ -233,10 +233,10 @@ debug\moc_predefs.h: C:\Qt\5.10.1\msvc2017_64\mkspecs\features\data\dummy.cpp
 compiler_moc_header_make_all: debug\moc_PTADetector.cpp debug\moc_ptawindow.cpp
 compiler_moc_header_clean:
 	-$(DEL_FILE) debug\moc_PTADetector.cpp debug\moc_ptawindow.cpp
-debug\moc_PTADetector.cpp: C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\QWidget \
-		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qwidget.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qtguiglobal.h \
+debug\moc_PTADetector.cpp: C:\Qt\5.10.1\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qnamespace.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qglobal.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qconfig.h \
@@ -258,14 +258,7 @@ debug\moc_PTADetector.cpp: C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\QWidget \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qmutex.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qnumeric.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qversiontagging.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qtgui-config.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qwindowdefs.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobjectdefs.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qnamespace.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qwindowdefs_win.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobject.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qstring.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qchar.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qbytearray.h \
@@ -290,6 +283,14 @@ debug\moc_PTADetector.cpp: C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\QWidget \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qvarlengtharray.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qcontainerfwd.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\QWidget \
+		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qwidget.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qwindowdefs_win.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qmargins.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qpaintdevice.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qrect.h \
@@ -336,7 +337,6 @@ debug\moc_PTADetector.cpp: C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\QWidget \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qtouchdevice.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtCore\QObject \
 		c:\Users\Lluchiari\Documents\OpenCV\opencv\build\include\opencv2\core\core.hpp \
 		c:\Users\Lluchiari\Documents\OpenCV\opencv\build\include\opencv2\core.hpp \
 		c:\Users\Lluchiari\Documents\OpenCV\opencv\build\include\opencv2\core\cvdef.h \
@@ -1025,10 +1025,10 @@ debug\main.obj: source\main.cpp include/ptawindow.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qinputmethod.h
 
 debug\PTADetector.obj: source\PTADetector.cpp include/PTADetector.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\QWidget \
-		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qwidget.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtCore\QObject \
+		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobject.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobjectdefs.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qnamespace.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qglobal.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qconfig-bootstrapped.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qconfig.h \
@@ -1050,14 +1050,7 @@ debug\PTADetector.obj: source\PTADetector.cpp include/PTADetector.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qmutex.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qnumeric.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qversiontagging.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qtgui-config.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qwindowdefs.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobjectdefs.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qnamespace.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobjectdefs_impl.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qwindowdefs_win.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobject.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qstring.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qchar.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qbytearray.h \
@@ -1082,6 +1075,14 @@ debug\PTADetector.obj: source\PTADetector.cpp include/PTADetector.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qvarlengtharray.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qcontainerfwd.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qobject_impl.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\QWidget \
+		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qwidget.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qtwidgetsglobal.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qtguiglobal.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qtgui-config.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtWidgets\qtwidgets-config.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qwindowdefs.h \
+		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qwindowdefs_win.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qmargins.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qpaintdevice.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qrect.h \
@@ -1128,7 +1129,6 @@ debug\PTADetector.obj: source\PTADetector.cpp include/PTADetector.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtCore\qfiledevice.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qvector2d.h \
 		C:\Qt\5.10.1\msvc2017_64\include\QtGui\qtouchdevice.h \
-		C:\Qt\5.10.1\msvc2017_64\include\QtCore\QObject \
 		c:\Users\Lluchiari\Documents\OpenCV\opencv\build\include\opencv2\core\core.hpp \
 		c:\Users\Lluchiari\Documents\OpenCV\opencv\build\include\opencv2\core.hpp \
 		c:\Users\Lluchiari\Documents\OpenCV\opencv\build\include\opencv2\core\cvdef.h \

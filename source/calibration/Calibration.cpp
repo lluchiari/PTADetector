@@ -5,31 +5,17 @@ Calibration::Calibration()
 {
 }
 
-Calibration::Calibration(QWidget *wid)
-{
-    this->_widget = wid;
-}
-
 Calibration::~Calibration()
 {
 }
+
 
 /**
  * @brief read the configuration file to configure the calibration
  * @return (0) if ok. (-1) if any error occured
  */
-int Calibration::readSettings()
+int Calibration::config(string inputFile, string stackFile, string outFile)
 {
-    string inputSettingsFile;
-    if(DEBUG)
-    {
-        inputSettingsFile = "C:/Users/Lluchiari/Documents/Qt/PTADetector/config/VID5.xml";
-    }
-    else{
-        // Call the window dialog to find the file
-        inputSettingsFile = QFileDialog::getOpenFileName(this->_widget, "Open a file", "../", "Configuration File (*.xml)").toLocal8Bit().constData();
-    }
-
     // Read the settings
     //    FileStorage fs(inputSettingsFile, FileStorage::READ);
     //    if (!fs.isOpened())
@@ -42,9 +28,14 @@ int Calibration::readSettings()
     //    // Close Settings file
     //    fs.release();
 
-    // Read the Stack of Images file
-    //this->_s.read(inputSettingsFile);
-    this->_s.read("0");
+    // Read Configuration File
+    this->_s.read(inputFile);
+    this->_s.setStackImage(stackFile);
+    this->_s.setOutputFile(outFile);
+
+    // Check if the input is valid
+    this->_s.interprate();
+
 if(DEBUG){cout << "After Read" << endl;}
 
     // Check if the configure file process is good

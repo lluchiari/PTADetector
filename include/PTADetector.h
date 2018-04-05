@@ -39,6 +39,7 @@ public:
 public:
     Mat borderDetecting(Mat);
     Mat loadImages(string);
+    int configCalibration();
     void runCalibration();
     int run();
 
@@ -49,11 +50,12 @@ public:
     PTAWindow *getWidget();
 
 public slots:
-    void setCalibrate();
+    void callCalibration();
 
 private:
     Calibration *_calibModel;
     PTAWindow *_view;
+    int _errorFlag;
 };
 
 

@@ -65,7 +65,11 @@ public:
 
 
     //Read vector for this class
-    void read(string fileLocation);
+    void read(string);
+
+    void setStackImage(string);
+
+    void setOutputFile(string);
 
     void interprate();
 

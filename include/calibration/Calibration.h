@@ -28,13 +28,11 @@ public:
     Calibration();
 	~Calibration();
 
-    int readSettings();
-//    int parseInput();
+    int config(string, string, string);
     int calibrate();
 
 private:
     Settings _s;            //Setting file to be read by the funciton
-    QWidget *_widget;
 
     enum {
         DETECTION = 0,      // This mode takes the images direct from a file
@@ -42,7 +40,10 @@ private:
         CALIBRATED = 2      // This mode indicate that is already calibrated
     };
 
-private:
+    string _inputSettingsFile;
+    string _inputStackImageFile;
+    string _OutputFileURL;
+
     bool runCalibrationAndSave(Settings&, Size, Mat&, Mat&, vector<vector<Point2f>>);
     void saveCameraParams( Settings&, Size&, Mat&, Mat&, const vector<Mat>&, const vector<Mat>&,
                                   const vector<float>&, const vector<vector<Point2f> >&, double);

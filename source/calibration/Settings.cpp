@@ -58,14 +58,21 @@ void Settings::read(string fileLocation)
     this->aspectRatio = 1;
     this->bwritePoints = 1;
     this->bwriteExtrinsics = 1;
-    this->outputFileName = "../config/out_camera_data.xml";
+    //this->outputFileName = outFileLocation;
     this->calibZeroTangentDist = 1;
     this->calibFixPrincipalPoint = 1;
     this->flipVertical = 0;
     this->showUndistorsed = 1;
-    this->input = fileLocation;
+    //this->input = fileLocation;
     this->delay = 100;
-    interprate();
+}
+
+void Settings::setStackImage(string stackFileLocation){
+    this->input = stackFileLocation;
+}
+
+void Settings::setOutputFile(string outFileLocation){
+    this->outputFileName = outFileLocation;
 }
 
 /**
