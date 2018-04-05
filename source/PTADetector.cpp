@@ -1,22 +1,23 @@
 #include "../include/PTADetector.h"
 
-PTADetector::PTADetector(QWidget *wid, QObject *parent):QObject(parent)
+PTADetector::PTADetector(PTAWindow *wid, QObject *parent) : QObject(parent)
 {    
     this->_view = wid;
-    this->_calib = new Calibration(wid);
-    QObject::connect(this->_view, SIGNAL(callCalibration()), detector, SLOT(setCalibrate()));
+    this->_calibModel = new Calibration(wid);
+    QObject::connect(this->_view, SIGNAL(callCalibration()), this, SLOT(setCalibrate()));
 }
 
 PTADetector::~PTADetector(){
-    delete _calib;
+    delete _calibModel;
 }
 
-void PTADetector::setWidget(QWidget *wid)
+
+void PTADetector::setWidget(PTAWindow *wid)
 {
     this->_view = wid;
 }
 
-QWidget *PTADetector::getWidget()
+PTAWindow *PTADetector::getWidget()
 {
     return this->_view;
 }
@@ -24,14 +25,14 @@ QWidget *PTADetector::getWidget()
 
 void PTADetector::runCalibration(){
     // Check if the reading process is working correctlly
-    if(_calib->readSettings() != 0)
+    if(_calibModel->readSettings() != 0)
     {
         cerr << "Error on input files!" << std::endl;
     }
     else{
         // Make the calibration
         if(DEBUG) {std::cout << "Calibration Starting" << std::endl;}
-        _calib->calibrate();
+        _calibModel->calibrate();
     }
 
     //    //QString inputSettingsFile = QFileDialog::getOpenFileName(&w, "Open a file", "", "Configuration File (*.xml)");
@@ -39,7 +40,8 @@ void PTADetector::runCalibration(){
 
 }
 
-void PTADetector::setCalibrate(){
+void PTADetector::setCalibrate()
+{
     cout << "Execute Calibration!" << endl;
 }
 

@@ -9,12 +9,14 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
+
+    // View
     PTAWindow w;
     w.show();
 
     // Controller
     PTADetector *detector = new PTADetector(&w);
 
+    a.exec();
     delete detector;
-    return a.exec();
 }

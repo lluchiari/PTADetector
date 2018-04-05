@@ -1,6 +1,7 @@
 #ifndef __PTA_DETECTOR__
 #define __PTA_DETECTOR__
 
+#include <QObject>
 #include <QWidget>
 
 #include <opencv2/core/core.hpp>
@@ -8,6 +9,7 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
+#include "./ptawindow.h"
 #include "./filter/CannyFilter.h"
 #include "./calibration/Calibration.h"
 #include <common.h>
@@ -31,7 +33,7 @@ class PTADetector : public QObject
     Q_OBJECT
 
 public:
-    PTADetector(QWidget *, QObject *parent=0);
+    PTADetector(PTAWindow *, QObject *parent=0);
     ~PTADetector();
 
 public:
@@ -41,17 +43,17 @@ public:
     int run();
 
     // Seters
-    void setWidget(QWidget *);
+    void setWidget(PTAWindow *);
 
     // Geters
-    QWidget *getWidget();
+    PTAWindow *getWidget();
 
 public slots:
     void setCalibrate();
 
 private:
-    Calibration *_calib;
-    QWidget *_view;
+    Calibration *_calibModel;
+    PTAWindow *_view;
 };
 
 
