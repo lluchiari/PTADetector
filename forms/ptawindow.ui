@@ -26,6 +26,40 @@
    <property name="bottomMargin">
     <number>9</number>
    </property>
+   <item row="1" column="0">
+    <widget class="QTextEdit" name="Log">
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+       <horstretch>0</horstretch>
+       <verstretch>2</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="sizeIncrement">
+      <size>
+       <width>0</width>
+       <height>0</height>
+      </size>
+     </property>
+     <property name="baseSize">
+      <size>
+       <width>0</width>
+       <height>1</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="locale">
+      <locale language="English" country="Canada"/>
+     </property>
+     <property name="readOnly">
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabWidget">
      <property name="sizePolicy">
@@ -171,32 +205,64 @@
           <item>
            <layout class="QVBoxLayout" name="StackImageFileLayout">
             <item>
-             <widget class="QLabel" name="StackImageFileLabel">
-              <property name="text">
-               <string>Load Stack Image File:</string>
+             <widget class="QStackedWidget" name="CameraStackedWidget">
+              <property name="currentIndex">
+               <number>0</number>
               </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QWidget" name="StackImageFileWidget" native="true">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <layout class="QHBoxLayout" name="horizontalLayout_2">
-               <item>
-                <widget class="QLineEdit" name="StackImageFileLineEdit"/>
-               </item>
-               <item>
-                <widget class="QPushButton" name="StackImageFilePushButton">
-                 <property name="text">
-                  <string>Load</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+              <widget class="QWidget" name="CameraIDWidget">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <layout class="QVBoxLayout" name="vertical_layout_6">
+                <item>
+                 <widget class="QLabel" name="CameraIDLabel">
+                  <property name="text">
+                   <string>Camera ID:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QSpinBox" name="CameraIDSpinBox"/>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="vertica_layout_6"/>
+                </item>
+               </layout>
+              </widget>
+              <widget class="QWidget" name="StackImageFileWidget">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <layout class="QVBoxLayout" name="vertical_layout_6">
+                <item>
+                 <widget class="QLabel" name="StackImageFileLabel">
+                  <property name="text">
+                   <string>Load Stack Image File:</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="vertica_layout_6">
+                  <item>
+                   <widget class="QLineEdit" name="StackImageFileLineEdit"/>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="StackImageFilePushButton">
+                    <property name="text">
+                     <string>Load</string>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
+              </widget>
              </widget>
             </item>
            </layout>
@@ -225,7 +291,7 @@
                <item>
                 <widget class="QPushButton" name="OutputFilePushButton">
                  <property name="text">
-                  <string>Load</string>
+                  <string>Save</string>
                  </property>
                 </widget>
                </item>
@@ -285,40 +351,6 @@
      </widget>
     </widget>
    </item>
-   <item row="1" column="0">
-    <widget class="QTextEdit" name="Log">
-     <property name="sizePolicy">
-      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-       <horstretch>0</horstretch>
-       <verstretch>2</verstretch>
-      </sizepolicy>
-     </property>
-     <property name="sizeIncrement">
-      <size>
-       <width>0</width>
-       <height>0</height>
-      </size>
-     </property>
-     <property name="baseSize">
-      <size>
-       <width>0</width>
-       <height>1</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="locale">
-      <locale language="English" country="Canada"/>
-     </property>
-     <property name="readOnly">
-      <bool>true</bool>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <tabstops>
@@ -359,12 +391,12 @@
    <slot>copy()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>517</x>
-     <y>233</y>
+     <x>589</x>
+     <y>308</y>
     </hint>
     <hint type="destinationlabel">
-     <x>506</x>
-     <y>230</y>
+     <x>508</x>
+     <y>306</y>
     </hint>
    </hints>
   </connection>

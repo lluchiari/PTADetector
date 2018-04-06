@@ -63,15 +63,17 @@ void Settings::read(string fileLocation)
     this->calibFixPrincipalPoint = 1;
     this->flipVertical = 0;
     this->showUndistorsed = 1;
-    //this->input = fileLocation;
+    this->input = fileLocation;
     this->delay = 100;
 }
 
 void Settings::setStackImage(string stackFileLocation){
+    if(DEBUG_SETTINGS){cout << "Settings::setStackImage(): File: " << stackFileLocation << endl;}
     this->input = stackFileLocation;
 }
 
 void Settings::setOutputFile(string outFileLocation){
+    if(DEBUG_SETTINGS){cout << "Settings::setOutputFile(): File: " << outFileLocation << endl;}
     this->outputFileName = outFileLocation;
 }
 
@@ -99,6 +101,7 @@ void Settings::interprate()
     }
     if (this->input.empty())
     {
+        if(DEBUG_SETTINGS){cout << "Settings::interprate(): Input is Empty!" << endl;}
         this->inputType = INVALID;
     }
     else
@@ -106,13 +109,14 @@ void Settings::interprate()
         // In the CAMERA case. Idicates the ID of the camera.
         if (this->input[0] >= '0' && this->input[0] <= '9')
         {
+            if(DEBUG_SETTINGS){cout << "Settings::interprate(): CAMERA Case" << endl;}
             stringstream ss(this->input);
             ss >> this->cameraID;
             this->inputType = CAMERA;
         }
         else
         {
-            if (isListOfImages(this->input) && readStringList(input, this->imageList))
+            if (isListOfImages(this->input) && readStringList(this->input, this->imageList))
             {
                 if(DEBUG_SETTINGS){cout << "Settings::interprate(): IMAGE_LIST mode " << endl;}
                 inputType = IMAGE_LIST;
@@ -133,13 +137,14 @@ void Settings::interprate()
             this->inputCapture.open(input);
         }
         if (inputType != IMAGE_LIST && !this->inputCapture.isOpened()){
-            if(DEBUG_SETTINGS){cout << "Settings::interprate(): INVALID mode " << endl;}
+            if(DEBUG_SETTINGS){cout << "Settings::interprate(): INVALID !IMAGE_LIST mode " << endl;}
             inputType = INVALID;
         }
     }
     if (inputType == INVALID)
     {
-        cerr << " Inexistent input: " << input;
+        if(DEBUG_SETTINGS){cout << "Settings::interprate(): INVALID mode " << endl;}
+        cerr << " Inexistent input: " << "'" << input << "'" << endl;
         goodInput = false;
     }
 
@@ -157,7 +162,7 @@ void Settings::interprate()
     if (!this->_patternToUse.compare("ASYMMETRIC_CIRCLES_GRID")) this->calibrationPattern = ASYMMETRIC_CIRCLES_GRID;
     if (this->calibrationPattern == NOT_EXISTING)
     {
-        cerr << " Inexistent camera calibration mode: " << this->_patternToUse << endl;
+        cerr << " Inexistent camera calibration pattern: " << "'" << this->_patternToUse << "'"<< endl;
         this->goodInput = false;
     }
     this->atImageList = 0;
@@ -188,23 +193,35 @@ bool Settings::readStringList( const string& filename, vector<string>& l )
 {
     l.clear();
     SETTING_STORAGE fs(filename, SETTING_STORAGE::READ);
-    if( !fs.isOpened() )
+    if( !fs.isOpened() ){
+        cerr << "Settings::readStringList: Error on opening Stacks File" << endl;
         return false;
+    }
     SETTING_NODE n = fs.getFirstTopLevelNode();
-    if( n.type() != SETTING_NODE::SEQ )
+    if( n.type() != SETTING_NODE::SEQ ){
+        cerr << "Settings::readStringList: Error! Incorrect Syntax on file or File is not a sequence." << endl;
         return false;
+    }
     SETTING_NODE_ITERATOR it = n.begin(), it_end = n.end();
-    for( ; it != it_end; ++it )
+    for( ; it != it_end; ++it ){
         l.push_back((string)*it);
+    }
+    if(DEBUG_SETTINGS){cout << "Settings::readStringList(): Return True" << endl;}
     return true;
 }
 
 bool Settings::isListOfImages( const string& filename)
 {
     string s(filename);
+    if(DEBUG_SETTINGS){cout << "Settings::isListOfImages(): String Name:"<< s << endl;}
     // Look for file extension
     if( s.find(".xml") == string::npos && s.find(".yaml") == string::npos && s.find(".yml") == string::npos )
+    {
+        cerr << "Settings::isListOfImages(): File extension is incorrect!" << endl;
         return false;
-    else
+    }
+    else{
+        if(DEBUG_SETTINGS){cout << "Settings::isListOfImages(): Return True" << endl;}
         return true;
+    }
 }

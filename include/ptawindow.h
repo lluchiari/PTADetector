@@ -1,6 +1,8 @@
 #ifndef PTAWINDOW_H
 #define PTAWINDOW_H
 
+#define MAX_CAM_QTY 7
+
 //Qt Libs
 #include <QWidget>
 #include <QString>
