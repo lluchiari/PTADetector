@@ -9,10 +9,10 @@
 
 # Ignore not used folders
 ###################
-./bin
-./debug
-./release
-./images/results
+./bin/*
+./debug/*
+./release/*
+./images/results/*
 
 # Ignore Qt Files
 ##################
