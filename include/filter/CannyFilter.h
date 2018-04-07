@@ -2,8 +2,8 @@
 #ifndef __CANNY_H__
 #define __CANNY_H__
 
-#include "opencv2/imgproc/imgproc.hpp"
-#include "opencv2/highgui/highgui.hpp"
+#include <opencv2/imgproc/imgproc.hpp>
+#include <opencv2/highgui/highgui.hpp>
 #include <string>
 #include <stdlib.h>
 #include <stdio.h>

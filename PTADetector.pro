@@ -44,17 +44,11 @@ FORMS += \
 
 DESTDIR = bin
 
-#win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../OpenCV/opencv/build/x64/vc15/lib/ -lopencv_world341
-#else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../OpenCV/opencv/build/x64/vc15/lib/ -lopencv_world341d
 
-#win64:CONFIG(release, debug|release): LIBS += -L$$PWD/../../OpenCV/opencv/build/x64/vc15/lib/ -lopencv_world341
-#/else:win64:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../OpenCV/opencv/build/x64/vc15/lib/ -lopencv_world341d
+LIBS += -L$(OPENCV_STATIC_DIR)/build/x64/vc15/lib/ -lopencv_world341
+LIBS += -L$(OPENCV_STATIC_DIR)/build/x64/vc15/lib/ -lopencv_world341d
 
-LIBS += -L$$PWD/../../OpenCV/opencv/build/x64/vc15/lib/ -lopencv_world341
-LIBS += -L$$PWD/../../OpenCV/opencv/build/x64/vc15/lib/ -lopencv_world341d
-
-
-INCLUDEPATH += $$PWD/../../OpenCV/opencv/build/x64/vc15 c:/Users/Lluchiari/Documents/OpenCV/opencv/build/include
+INCLUDEPATH += $(OPENCV_STATIC_DIR)/build/x64/vc15 $(OPENCV_STATIC_DIR)/build/include
 INCLUDEPATH += $$PWD/config
 INCLUDEPATH += $$PWD/include/utils
 
