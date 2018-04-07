@@ -17,3 +17,4 @@
 # Ignore Qt Files
 ##################
 *.pro.user
+PTADetector.pro.user
