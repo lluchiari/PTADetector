@@ -42,7 +42,7 @@ HEADERS += \
 FORMS += \
         forms/ptawindow.ui
 
-DESTDIR = build/bin
+DESTDIR = bin
 
 
 LIBS += -L$(OPENCV_STATIC_DIR)/build/x64/vc15/lib/ -lopencv_world341

@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
     // Controller
     PTADetector *detector = new PTADetector(&w);
-
+cout << "Opa" << endl;
     a.exec();
     delete detector;
 }

@@ -416,10 +416,10 @@ qmake_all: FORCE
 make_first: release-make_first debug-make_first  FORCE
 all: release-all debug-all  FORCE
 clean: release-clean debug-clean  FORCE
-	-$(DEL_FILE) build\bin\PTADetector.exp
+	-$(DEL_FILE) bin\PTADetector.exp
 distclean: release-distclean debug-distclean  FORCE
 	-$(DEL_FILE) Makefile
-	-$(DEL_FILE) .qmake.stash build\bin\PTADetector.lib
+	-$(DEL_FILE) .qmake.stash bin\PTADetector.lib
 
 release-mocclean:
 	@set MAKEFLAGS=$(MAKEFLAGS)
