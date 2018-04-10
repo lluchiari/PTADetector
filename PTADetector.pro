@@ -42,11 +42,14 @@ HEADERS += \
 FORMS += \
         forms/ptawindow.ui
 
-DESTDIR = bin
+DESTDIR = build/bin
 
 
 LIBS += -L$(OPENCV_STATIC_DIR)/build/x64/vc15/lib/ -lopencv_world341
 LIBS += -L$(OPENCV_STATIC_DIR)/build/x64/vc15/lib/ -lopencv_world341d
+
+#Ideas
+#unix:INCLUDEPATH += "/home/user/extra headers"
 
 INCLUDEPATH += $(OPENCV_STATIC_DIR)/build/x64/vc15 $(OPENCV_STATIC_DIR)/build/include
 INCLUDEPATH += $$PWD/config

@@ -9,7 +9,7 @@
 
 # Ignore not used folders
 ###################
-./bin/*
+./build/bin/*
 ./debug/*
 ./release/*
 ./images/results/*

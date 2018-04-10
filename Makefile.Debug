@@ -76,9 +76,9 @@ DIST          = C:/Users/Lluchiari/Documents/Qt/PTADetector/config/* \
 		source\calibration\Settings.cpp \
 		source\ptawindow.cpp
 QMAKE_TARGET  = PTADetector
-DESTDIR        = bin\ #avoid trailing-slash linebreak
+DESTDIR        = build\bin\ #avoid trailing-slash linebreak
 TARGET         = PTADetector.exe
-DESTDIR_TARGET = bin\PTADetector.exe
+DESTDIR_TARGET = build\bin\PTADetector.exe
 
 ####### Implicit rules
 
@@ -205,10 +205,10 @@ dist:
 
 clean: compiler_clean 
 	-$(DEL_FILE) debug\main.obj debug\PTADetector.obj debug\CannyFilter.obj debug\Calibration.obj debug\Settings.obj debug\ptawindow.obj debug\moc_PTADetector.obj debug\moc_ptawindow.obj
-	-$(DEL_FILE) bin\PTADetector.exp debug\PTADetector.vc.pdb bin\PTADetector.ilk bin\PTADetector.idb
+	-$(DEL_FILE) build\bin\PTADetector.exp debug\PTADetector.vc.pdb build\bin\PTADetector.ilk build\bin\PTADetector.idb
 
 distclean: clean 
-	-$(DEL_FILE) .qmake.stash bin\PTADetector.lib bin\PTADetector.pdb
+	-$(DEL_FILE) .qmake.stash build\bin\PTADetector.lib build\bin\PTADetector.pdb
 	-$(DEL_FILE) $(DESTDIR_TARGET)
 	-$(DEL_FILE) Makefile.Debug
 
