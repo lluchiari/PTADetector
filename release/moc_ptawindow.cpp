@@ -1,16 +1,16 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'ptawindow.h'
+** Meta object code from reading C++ file 'PTAWindow.h'
 **
 ** Created by: The Qt Meta Object Compiler version 67 (Qt 5.10.1)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include "../include/ptawindow.h"
+#include "../include/PTAWindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'ptawindow.h' doesn't include <QObject>."
+#error "The header file 'PTAWindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
 #error "This file was generated using the moc from 5.10.1. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_PTAWindow_t {
-    QByteArrayData data[10];
-    char stringdata0[298];
+    QByteArrayData data[12];
+    char stringdata0[314];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,7 +40,9 @@ QT_MOC_LITERAL(5, 92, 35), // "on_StackImageFilePushButton_c..."
 QT_MOC_LITERAL(6, 128, 31), // "on_OutputFilePushButton_clicked"
 QT_MOC_LITERAL(7, 160, 48), // "on_ControlSelector_ImageStack..."
 QT_MOC_LITERAL(8, 209, 44), // "on_ControlSelector_CameraRadi..."
-QT_MOC_LITERAL(9, 254, 43) // "on_ControlSelector_VideoRadio..."
+QT_MOC_LITERAL(9, 254, 43), // "on_ControlSelector_VideoRadio..."
+QT_MOC_LITERAL(10, 298, 8), // "writeLog"
+QT_MOC_LITERAL(11, 307, 6) // "string"
 
     },
     "PTAWindow\0callCalibration\0\0"
@@ -50,7 +52,8 @@ QT_MOC_LITERAL(9, 254, 43) // "on_ControlSelector_VideoRadio..."
     "on_OutputFilePushButton_clicked\0"
     "on_ControlSelector_ImageStackRadioButton_clicked\0"
     "on_ControlSelector_CameraRadioButton_clicked\0"
-    "on_ControlSelector_VideoRadioButton_clicked"
+    "on_ControlSelector_VideoRadioButton_clicked\0"
+    "writeLog\0string"
 };
 #undef QT_MOC_LITERAL
 
@@ -60,7 +63,7 @@ static const uint qt_meta_data_PTAWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-       8,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -68,16 +71,17 @@ static const uint qt_meta_data_PTAWindow[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,   54,    2, 0x06 /* Public */,
+       1,    0,   59,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    0,   55,    2, 0x08 /* Private */,
-       4,    0,   56,    2, 0x08 /* Private */,
-       5,    0,   57,    2, 0x08 /* Private */,
-       6,    0,   58,    2, 0x08 /* Private */,
-       7,    0,   59,    2, 0x08 /* Private */,
-       8,    0,   60,    2, 0x08 /* Private */,
-       9,    0,   61,    2, 0x08 /* Private */,
+       3,    0,   60,    2, 0x08 /* Private */,
+       4,    0,   61,    2, 0x08 /* Private */,
+       5,    0,   62,    2, 0x08 /* Private */,
+       6,    0,   63,    2, 0x08 /* Private */,
+       7,    0,   64,    2, 0x08 /* Private */,
+       8,    0,   65,    2, 0x08 /* Private */,
+       9,    0,   66,    2, 0x08 /* Private */,
+      10,    2,   67,    2, 0x0a /* Public */,
 
  // signals: parameters
     QMetaType::Void,
@@ -90,6 +94,7 @@ static const uint qt_meta_data_PTAWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 11, QMetaType::Int,    2,    2,
 
        0        // eod
 };
@@ -108,6 +113,7 @@ void PTAWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         case 5: _t->on_ControlSelector_ImageStackRadioButton_clicked(); break;
         case 6: _t->on_ControlSelector_CameraRadioButton_clicked(); break;
         case 7: _t->on_ControlSelector_VideoRadioButton_clicked(); break;
+        case 8: _t->writeLog((*reinterpret_cast< string(*)>(_a[1])),(*reinterpret_cast< int(*)>(_a[2]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -120,7 +126,6 @@ void PTAWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
             }
         }
     }
-    Q_UNUSED(_a);
 }
 
 QT_INIT_METAOBJECT const QMetaObject PTAWindow::staticMetaObject = {
@@ -148,13 +153,13 @@ int PTAWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 9;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 9)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 8;
+        _id -= 9;
     }
     return _id;
 }

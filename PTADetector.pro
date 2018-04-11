@@ -29,7 +29,8 @@ SOURCES += \
         source/filter/CannyFilter.cpp \
         source/calibration/Calibration.cpp \
         source/calibration/Settings.cpp \
-        source/ptawindow.cpp
+        source/MyLoger.cpp \
+        source/PTAWindow.cpp
 
 HEADERS += \        
         include/PTADetector.h\
@@ -37,7 +38,8 @@ HEADERS += \
         include/calibration/Settings.h\
         include/filter/CannyFilter.h\
         include/utils/common.h \
-        include/ptawindow.h
+        include/PTAWindow.h \
+        include/MyLoger.h
 
 FORMS += \
         forms/ptawindow.ui

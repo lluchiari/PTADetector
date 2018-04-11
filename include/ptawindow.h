@@ -1,5 +1,5 @@
-#ifndef PTAWINDOW_H
-#define PTAWINDOW_H
+#ifndef __PTAWINDOW_H__
+#define __PTAWINDOW_H__
 
 #define MAX_CAM_QTY 7
 
@@ -54,6 +54,9 @@ private slots:
     void on_ControlSelector_CameraRadioButton_clicked();
 
     void on_ControlSelector_VideoRadioButton_clicked();
+
+public slots:
+    void writeLog(string, int);
 
 signals:
     void callCalibration();

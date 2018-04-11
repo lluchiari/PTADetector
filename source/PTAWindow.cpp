@@ -1,4 +1,4 @@
-#include "../include/ptawindow.h"
+#include "../include/PTAWindow.h"
 #include "ui_ptawindow.h"
 
 PTAWindow::PTAWindow(QWidget *parent) :
@@ -17,6 +17,40 @@ PTAWindow::PTAWindow(QWidget *parent) :
 PTAWindow::~PTAWindow()
 {
     delete ui;
+}
+
+
+
+QString endHtml = "</font><br>";
+
+void PTAWindow::writeLog(string text, int color){
+    if(!text.empty()){
+        QString _text = QString::fromStdString(text);
+        QString startHtml = "<font color=";
+        QString sizeHtml = "size=\"1\" ";
+        QString endHtml = "</font><br>";
+
+        // Visible Log Part
+        if(color>0){
+            switch (color) {
+            case 1:
+                _text = startHtml + QString("\"Red\" ") + sizeHtml + QString(">") + _text;
+                break;
+            case 2:
+                _text = startHtml + QString("\"Green\" ") + sizeHtml + QString(">") + _text;
+                break;
+            case 3:
+                _text = startHtml + QString("\"Blue\" ") + sizeHtml + QString(">") + _text;
+                break;
+            }
+            _text += endHtml;
+            ui->Log->insertHtml(_text);
+        }
+        else{
+            _text = startHtml + QString("\"Black\" ") + sizeHtml + QString(">") + _text + endHtml;
+            ui->Log->insertHtml(_text);
+        }
+    }
 }
 
 void PTAWindow::on_ConfirmPushButton_clicked()

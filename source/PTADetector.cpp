@@ -1,10 +1,11 @@
 #include "../include/PTADetector.h"
 
-PTADetector::PTADetector(PTAWindow *wid, QObject *parent) : QObject(parent)
+PTADetector::PTADetector(PTAWindow *wid, MyLoger *log, QObject *parent) : QObject(parent)
 {    
     this->_view = wid;
     this->_calibModel = new Calibration();
     this->_errorFlag = 0;
+    this->_log = log;
 
     // Connections
     QObject::connect(this->_view, SIGNAL(callCalibration()), this, SLOT(callCalibration()));
@@ -12,8 +13,8 @@ PTADetector::PTADetector(PTAWindow *wid, QObject *parent) : QObject(parent)
 
 PTADetector::~PTADetector(){
     delete _calibModel;
+    delete _log;
 }
-
 
 void PTADetector::setWidget(PTAWindow *wid)
 {
@@ -27,7 +28,7 @@ PTAWindow *PTADetector::getWidget()
 
 void PTADetector::callCalibration()
 {
-    cout << "Execute Calibration!" << endl;
+    _log->write("Start Calibration!\n");
     this->configCalibration();
     this->runCalibration();
 }
@@ -41,6 +42,7 @@ int PTADetector::configCalibration(){
     // Check if the reading process is working correctlly
     if(_errorFlag != 0)
     {
+        _log->write("Error on input files!\n", 1);
         cerr << "Error on input files!" << std::endl;
     }
     return _errorFlag;
@@ -52,9 +54,12 @@ void PTADetector::runCalibration(){
     if(DEBUG) {std::cout << "Calibration Starting" << std::endl;}
 
     if(!_errorFlag){
-        _calibModel->calibrate();
+        if(_calibModel->calibrate() == 1){
+            _log->write("Success end of calibrating.\n");
+        }
     }
     else{
+        _log->write("Could not start calibration! Something went wrong!\n", 1);
         std::cout << "Could not start calibration! Something went wrong!" << std::endl;
     }
 }

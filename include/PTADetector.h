@@ -1,22 +1,27 @@
 #ifndef __PTA_DETECTOR__
 #define __PTA_DETECTOR__
 
+//Qt Libs
 #include <QObject>
 #include <QWidget>
 
+// STL Libs
+#include <iostream>
+#include <fstream>
+#include <string>
+
+// OpenCV Libs
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgcodecs.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/highgui/highgui.hpp>
 
-#include "./ptawindow.h"
+//Internal Lib
+#include "./PTAWindow.h"
+#include "./Myloger.h"
 #include "./filter/CannyFilter.h"
 #include "./calibration/Calibration.h"
 #include <common.h>
-
-#include <iostream>
-#include <fstream>
-#include <string>
 
 using namespace cv;
 using namespace std;
@@ -33,7 +38,7 @@ class PTADetector : public QObject
     Q_OBJECT
 
 public:
-    PTADetector(PTAWindow *, QObject *parent=0);
+    PTADetector(PTAWindow *, MyLoger *, QObject *parent=0);
     ~PTADetector();
 
 public:
@@ -55,6 +60,7 @@ public slots:
 private:
     Calibration *_calibModel;
     PTAWindow *_view;
+    MyLoger *_log;
     int _errorFlag;
 };
 
